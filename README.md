@@ -1,23 +1,23 @@
-# Airwallex Scale Web
+# Airwallex Platform Onboarding SDK
 
 ## Installation
 
 Install with Yarn
 
 ```
-yarn add @airwallex/scale-web
+yarn add @airwallex/platform-onboarding-sdk
 ```
 
 Or, with NPM
 
 ```
-npm install @airwallex/scale-web
+npm install @airwallex/platform-onboarding-sdk
 ```
 
 ## Initialization
 
 ```ts
-import { loadScript } from '@airwallex/scale-web';
+import { loadScript } from '@airwallex/platform-onboarding-sdk';
 
 const sdk = await loadScript({
   env: 'demo', // 'staging' | 'demo' | 'prod'
@@ -26,7 +26,7 @@ const sdk = await loadScript({
 ```
 
 ```ts
-import { init } from '@airwallex/scale-web';
+import { init } from '@airwallex/platform-onboarding-sdk';
 
 await sdk.init(options);
 ```
@@ -50,7 +50,7 @@ await sdk.init({
 ### Element
 
 ```ts
-import { createElement } from '@airwallex/scale-web';
+import { createElement } from '@airwallex/platform-onboarding-sdk';
 
 sdk.createElement(options);
 ```

@@ -36,7 +36,7 @@ const createScript = (gatewayUrl: string): HTMLScriptElement => {
   const parentDom = document.head || document.body;
 
   if (!parentDom) {
-    throw new Error('Airwallex scale web scripts requires a <head> or <body> html element in order to be loaded.');
+    throw new Error('Airwallex Onboarding SDK scripts requires a <head> or <body> html element in order to be loaded.');
   }
 
   parentDom.appendChild(script);
@@ -67,12 +67,12 @@ export const loadScript = async (options: LoadScriptOptions) => {
         if (window.AirwallexScale) {
           resolve(window.AirwallexScale);
         } else {
-          reject(new Error('Failed to load Airwallex Scale Web on load event'));
+          reject(new Error('Failed to load Airwallex Onboarding SDK on load event'));
         }
       });
 
       script.addEventListener('error', () => {
-        reject(new Error('Failed to load Airwallex Scale Web scripts'));
+        reject(new Error('Failed to load Airwallex Onboarding SDK scripts'));
         script.remove && script.remove();
       });
     });

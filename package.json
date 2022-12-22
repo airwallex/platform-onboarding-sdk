@@ -1,7 +1,7 @@
 {
-  "name": "@airwallex/scale-web",
-  "version": "0.0.12",
-  "description": "This is a lightweight wrapper of Airwallex scale widget, which allows merchant site to integrate with Airwallex scale flow.",
+  "name": "@airwallex/platform-onboarding-sdk",
+  "version": "0.0.1",
+  "description": "This is a lightweight wrapper of Airwallex onboarding widget, which allows merchant site to integrate with Airwallex onboarding flow.",
   "main": "dist/src/index.js",
   "typings": "dist/types/index.d.ts",
   "files": [
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.awx.im/airwallex-dev-scale/scale-web.git"
+    "url": "https://github.com/airwallex/platform-onboarding-sdk.git"
   },
   "author": "",
   "license": "MIT",
