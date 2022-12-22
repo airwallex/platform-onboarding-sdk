@@ -3,7 +3,7 @@ import {
   InitOptions,
   ElementType,
   AirwallexEnv,
-  AirwallexScale,
+  AirwallexOnboarding,
   ElementOptions,
   LoadScriptOptions,
   ElementOptionsTypeMap,
@@ -15,14 +15,14 @@ export type { ElementType, LoadScriptOptions, InitOptions, Element, ElementOptio
 
 declare global {
   interface Window {
-    AirwallexScale: AirwallexScale;
+    AirwallexOnboarding: AirwallexOnboarding;
   }
 }
 
 const ENV_HOST = {
-  staging: 'static-staging.airwallex.com/widgets/sdk/scale',
-  demo: 'static-demo.airwallex.com/widgets/sdk/scale',
-  prod: 'static-prod.airwallex.com/widgets/sdk/scale',
+  staging: 'static-staging.airwallex.com/widgets/sdk/onboarding',
+  demo: 'static-demo.airwallex.com/widgets/sdk/onboarding',
+  prod: 'static-prod.airwallex.com/widgets/sdk/onboarding',
 };
 
 export const getGatewayUrl = (env: AirwallexEnv, version: string): string =>
@@ -49,23 +49,23 @@ export const loadScript = async (options: LoadScriptOptions) => {
     return null;
   }
 
-  if (window.AirwallexScale) {
-    return window.AirwallexScale;
+  if (window.AirwallexOnboarding) {
+    return window.AirwallexOnboarding;
   }
 
   const MAX_RETRY_COUNT = 3;
   let RETRY_COUNT = 0;
   const sleep = () => new Promise((resolve) => window.setTimeout(resolve, 500));
 
-  const tryToResolve = async (): Promise<AirwallexScale> => {
+  const tryToResolve = async (): Promise<AirwallexOnboarding> => {
     const scriptUrl = getGatewayUrl(options?.env || 'prod', options.version);
     const script: HTMLScriptElement =
       document.querySelector(`script[src="${scriptUrl}"], script[src="${scriptUrl}/"]`) || createScript(scriptUrl);
 
     return new Promise((resolve, reject) => {
       script.addEventListener('load', () => {
-        if (window.AirwallexScale) {
-          resolve(window.AirwallexScale);
+        if (window.AirwallexOnboarding) {
+          resolve(window.AirwallexOnboarding);
         } else {
           reject(new Error('Failed to load Airwallex Onboarding SDK on load event'));
         }
@@ -91,12 +91,12 @@ export const loadScript = async (options: LoadScriptOptions) => {
 };
 
 export const init: typeof initFn = (options: InitOptions) => {
-  if (!window.AirwallexScale) {
+  if (!window.AirwallexOnboarding) {
     const errMsg = 'Please loadScript() before init()';
     console.error(errMsg);
     return Promise.reject(new Error(errMsg));
   } else {
-    return window.AirwallexScale.init(options);
+    return window.AirwallexOnboarding.init(options);
   }
 };
 
@@ -104,10 +104,10 @@ export const createElement: typeof createElementFn = (
   type: ElementType,
   options: ElementOptionsTypeMap[ElementType]
 ) => {
-  if (!window.AirwallexScale) {
+  if (!window.AirwallexOnboarding) {
     console.error('Please loadScript() before createElement()');
     return null;
   } else {
-    return window.AirwallexScale.createElement(type, options);
+    return window.AirwallexOnboarding.createElement(type, options);
   }
 };

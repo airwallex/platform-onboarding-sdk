@@ -8,7 +8,7 @@ export type Config = {
  */
 export type AirwallexEnv = 'staging' | 'demo' | 'prod';
 
-export type AirwallexScale = {
+export type AirwallexOnboarding = {
   init: typeof init;
   createElement: typeof createElement;
   loadScript: typeof loadScript;
@@ -68,7 +68,7 @@ export declare function createElement(
 /**
  * Load Script
  */
-export declare function loadScript(options: LoadScriptOptions): Promise<AirwallexScale>;
+export declare function loadScript(options: LoadScriptOptions): Promise<AirwallexOnboarding>;
 
 /**
  * Define of error code
