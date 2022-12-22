@@ -1,0 +1,10 @@
+**/node_modules/*
+**/packages/**/dist/*
+**/packages/**/static/*
+*.json
+*.lock
+*.log
+*.md
+*.d.ts
+*.svg
+*.mdx
