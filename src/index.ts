@@ -67,12 +67,12 @@ export const loadScript = async (options: LoadScriptOptions) => {
         if (window.AirwallexOnboarding) {
           resolve(window.AirwallexOnboarding);
         } else {
-          reject(new Error('Failed to load Airwallex Onboarding SDK on load event'));
+          reject(new Error('Failed to load Airwallex Onboarding SDK on load event.'));
         }
       });
 
       script.addEventListener('error', () => {
-        reject(new Error('Failed to load Airwallex Onboarding SDK scripts'));
+        reject(new Error('Failed to load Airwallex Onboarding SDK scripts.'));
         script.remove && script.remove();
       });
     });
