@@ -34,7 +34,7 @@ await sdk.init(options);
 | Option         | Type     | Description  |
 | :------------- | :------- | :----------- |
 | `langKey`      | `string` | **Optional** |
-| `sandbox`      | `string` | **Optional** |
+| `env`          | `string` | **Optional** |
 | `clientId`     | `string` | **Required** |
 | `authCode`     | `string` | **Required** |
 | `codeVerifier` | `string` | **Required** |
@@ -43,7 +43,9 @@ await sdk.init(options);
 
 ```ts
 await sdk.init({
+  authCode: "",
   clientId: "",
+  codeVerifier: "",
 });
 ```
 

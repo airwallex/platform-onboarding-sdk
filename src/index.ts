@@ -22,7 +22,7 @@ declare global {
 const ENV_HOST = {
   staging: 'static-staging.airwallex.com/widgets/sdk/onboarding',
   demo: 'static-demo.airwallex.com/widgets/sdk/onboarding',
-  prod: 'static-prod.airwallex.com/widgets/sdk/onboarding',
+  prod: 'static.airwallex.com/widgets/sdk/onboarding',
 };
 
 export const getGatewayUrl = (env: AirwallexEnv, version: string): string =>
