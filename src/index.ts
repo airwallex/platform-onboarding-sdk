@@ -24,7 +24,9 @@ const ENV_HOST = {
   prod: 'static.airwallex.com/widgets/sdk/onboarding',
 };
 
-export const getGatewayUrl = (env: AirwallexEnv): string => `https://${ENV_HOST[env] || ENV_HOST.prod}/v1/`;
+const SDK_VERSION = 'v1';
+
+export const getGatewayUrl = (env: AirwallexEnv): string => `https://${ENV_HOST[env] || ENV_HOST.prod}/${SDK_VERSION}/`;
 const STATIC_FILE_NAME = 'index.js';
 
 const createScript = (gatewayUrl: string): HTMLScriptElement => {
