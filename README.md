@@ -17,24 +17,15 @@ npm install @airwallex/platform-onboarding-sdk
 ## Initialization
 
 ```ts
-import { loadScript } from '@airwallex/platform-onboarding-sdk';
-
-const sdk = await loadScript({
-  env: 'demo', // 'staging' | 'demo' | 'prod'
-  version: 'v1',
-});
-```
-
-```ts
 import { init } from '@airwallex/platform-onboarding-sdk';
 
-await sdk.init(options);
+await init(options);
 ```
 
 | Option         | Type     | Description  |
 | :------------- | :------- | :----------- |
-| `langKey`      | `string` | **Optional** |
 | `env`          | `string` | **Optional** |
+| `langKey`      | `string` | **Optional** |
 | `clientId`     | `string` | **Required** |
 | `authCode`     | `string` | **Required** |
 | `codeVerifier` | `string` | **Required** |
@@ -42,7 +33,8 @@ await sdk.init(options);
 #### Usage/Examples
 
 ```ts
-await sdk.init({
+// initialize window.AirwallexOnboarding
+await init({
   authCode: "",
   clientId: "",
   codeVerifier: "",
@@ -54,7 +46,10 @@ await sdk.init({
 ```ts
 import { createElement } from '@airwallex/platform-onboarding-sdk';
 
-sdk.createElement(options);
+createElement(options);
+
+// Or
+window.AirwallexOnboarding.createElement(options);
 ```
 
 | Parameter | Type                      | Description                          |
@@ -66,7 +61,7 @@ sdk.createElement(options);
 #### Usage/Examples
 
 ```ts
-const element = await sdk.createElement({
+const element = await createElement({
   type: "kyc",
 });
 ```
