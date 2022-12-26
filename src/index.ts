@@ -5,13 +5,12 @@ import {
   AirwallexEnv,
   AirwallexOnboarding,
   ElementOptions,
-  LoadScriptOptions,
   ElementOptionsTypeMap,
   init as initFn,
   createElement as createElementFn,
 } from '../types';
 
-export type { ElementType, LoadScriptOptions, InitOptions, Element, ElementOptions };
+export type { ElementType, InitOptions, Element, ElementOptions };
 
 declare global {
   interface Window {
@@ -25,8 +24,7 @@ const ENV_HOST = {
   prod: 'static.airwallex.com/widgets/sdk/onboarding',
 };
 
-export const getGatewayUrl = (env: AirwallexEnv, version: string): string =>
-  `https://${ENV_HOST[env] || ENV_HOST.prod}/${version}/`;
+export const getGatewayUrl = (env: AirwallexEnv): string => `https://${ENV_HOST[env] || ENV_HOST.prod}/v1/`;
 const STATIC_FILE_NAME = 'index.js';
 
 const createScript = (gatewayUrl: string): HTMLScriptElement => {
@@ -44,7 +42,7 @@ const createScript = (gatewayUrl: string): HTMLScriptElement => {
   return script;
 };
 
-export const loadScript = async (options: LoadScriptOptions) => {
+export const loadScript = async ({ env }: { env?: AirwallexEnv }) => {
   if (typeof window === 'undefined') {
     return null;
   }
@@ -58,7 +56,7 @@ export const loadScript = async (options: LoadScriptOptions) => {
   const sleep = () => new Promise((resolve) => window.setTimeout(resolve, 500));
 
   const tryToResolve = async (): Promise<AirwallexOnboarding> => {
-    const scriptUrl = getGatewayUrl(options?.env || 'prod', options.version);
+    const scriptUrl = getGatewayUrl(env || 'prod');
     const script: HTMLScriptElement =
       document.querySelector(`script[src="${scriptUrl}"], script[src="${scriptUrl}/"]`) || createScript(scriptUrl);
 
@@ -90,9 +88,11 @@ export const loadScript = async (options: LoadScriptOptions) => {
   return null;
 };
 
-export const init: typeof initFn = (options: InitOptions) => {
+export const init: typeof initFn = async (options: InitOptions) => {
+  await loadScript(options);
+
   if (!window.AirwallexOnboarding) {
-    const errMsg = 'Please loadScript() before init()';
+    const errMsg = 'Failed when initialize Airwallex platform onboarding SDK';
     console.error(errMsg);
     return Promise.reject(new Error(errMsg));
   } else {
@@ -105,7 +105,7 @@ export const createElement: typeof createElementFn = (
   options: ElementOptionsTypeMap[ElementType]
 ) => {
   if (!window.AirwallexOnboarding) {
-    console.error('Please loadScript() before createElement()');
+    console.error('Please initialize Airwallex platform onboarding SDK before createElement()');
     return null;
   } else {
     return window.AirwallexOnboarding.createElement(type, options);

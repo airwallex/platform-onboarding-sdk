@@ -17,24 +17,15 @@ npm install @airwallex/platform-onboarding-sdk
 ## Initialization
 
 ```ts
-import { loadScript } from '@airwallex/platform-onboarding-sdk';
-
-const sdk = await loadScript({
-  env: 'demo', // 'staging' | 'demo' | 'prod'
-  version: 'v1',
-});
-```
-
-```ts
 import { init } from '@airwallex/platform-onboarding-sdk';
 
-await sdk.init(options);
+const sdk = await init(options);
 ```
 
 | Option         | Type     | Description  |
 | :------------- | :------- | :----------- |
-| `langKey`      | `string` | **Optional** |
 | `env`          | `string` | **Optional** |
+| `langKey`      | `string` | **Optional** |
 | `clientId`     | `string` | **Required** |
 | `authCode`     | `string` | **Required** |
 | `codeVerifier` | `string` | **Required** |

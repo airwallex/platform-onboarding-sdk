@@ -1,6 +1,6 @@
 {
   "name": "@airwallex/platform-onboarding-sdk",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This is a lightweight wrapper of Airwallex onboarding widget, which allows merchant site to integrate with Airwallex onboarding flow.",
   "main": "dist/src/index.js",
   "typings": "dist/types/index.d.ts",

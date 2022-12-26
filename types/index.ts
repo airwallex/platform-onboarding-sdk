@@ -11,7 +11,6 @@ export type AirwallexEnv = 'staging' | 'demo' | 'prod';
 export type AirwallexOnboarding = {
   init: typeof init;
   createElement: typeof createElement;
-  loadScript: typeof loadScript;
 };
 
 /**
@@ -47,11 +46,6 @@ export type Result = {
   message?: string;
 };
 
-export type LoadScriptOptions = {
-  env: AirwallexEnv;
-  version: string;
-};
-
 /**
  * The first method call to init element integration
  */
@@ -64,11 +58,6 @@ export declare function createElement(
   elementType: ElementType,
   options: ElementOptionsTypeMap[ElementType]
 ): Element | null;
-
-/**
- * Load Script
- */
-export declare function loadScript(options: LoadScriptOptions): Promise<AirwallexOnboarding>;
 
 /**
  * Define of error code
