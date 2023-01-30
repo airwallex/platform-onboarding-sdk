@@ -22,13 +22,13 @@ import { init } from '@airwallex/platform-onboarding-sdk';
 await init(options);
 ```
 
-| Option         | Type     | Required? | Default value | Description |
-| :------------- | :------- | :----------- | :----------- | :----------- |
-| `env`          | `string` | **NO** | `prod` | The Airwallex environment you want to integrate your application with. Options include: `staging`, `demo`, `prod` |
-| `langKey`      | `string` | **NO** | `en` | Language. Options include: `en`, `zh` |
-| `clientId`     | `string` | **YES** | - | Your unique Client ID issued by Airwallex. You can find the client id on [`Airwallex WebApp - Developer - API Keys`](https://www.airwallex.com/app/account/apiKeys) |
-| `authCode`     | `string` | **YES** | - | Auth code to authenticate the connected account retrieved from `/api/v1/accounts/{id}/authorize` |
-| `codeVerifier` | `string` | **YES** | - | Serves as proof key for code exchange (see RFC 7636 Section 4). A random string picked by yourself, and used to generate the codeChallenge. |
+| Option         | Type     | Required? | Default value | Description                                                                                                                                                         |
+| :------------- | :------- | :-------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `env`          | `string` | **NO**    | `prod`        | The Airwallex environment you want to integrate your application with. Options include: `staging`, `demo`, `prod`                                                   |
+| `langKey`      | `string` | **NO**    | `en`          | Language. Options include: `en`, `zh`                                                                                                                               |
+| `clientId`     | `string` | **YES**   | -             | Your unique Client ID issued by Airwallex. You can find the client id on [`Airwallex WebApp - Developer - API Keys`](https://www.airwallex.com/app/account/apiKeys) |
+| `authCode`     | `string` | **YES**   | -             | Auth code to authenticate the connected account retrieved from `/api/v1/accounts/{id}/authorize`                                                                    |
+| `codeVerifier` | `string` | **YES**   | -             | Serves as proof key for code exchange (see RFC 7636 Section 4). A random string picked by yourself, and used to generate the codeChallenge.                         |
 
 #### Usage/Examples
 
@@ -54,17 +54,17 @@ window.AirwallexOnboarding.createElement(options);
 
 #### Method parameters
 
-| Parameter | Type                      | Required? | Description                         |
-| :-------- | :------------------------ | :------- | :----------------------------------- |
-| `type`    | `string`                  | **YES**  | The type of element you are creating. Supported types: `kyc` |
-| `options` | `Record<string, unknown>` | **NO**   | Options for creating an Element, which differ for each Element. Refer to the following table.                       |
+| Parameter | Type                      | Required? | Description                                                                                   |
+| :-------- | :------------------------ | :-------- | :-------------------------------------------------------------------------------------------- |
+| `type`    | `string`                  | **YES**   | The type of element you are creating. Supported types: `kyc`                                  |
+| `options` | `Record<string, unknown>` | **NO**    | Options for creating an Element, which differ for each Element. Refer to the following table. |
 
 #### `options` object properties:
 
-| Element type | Property     | Required? | Type      | Description                    |
-| :----------- | :-------     | :-------- | :-------- | :----------------------------- |
-| `kyc`        | `hideHeader` | **NO**    | `boolean` | Used to hide kyc page’s header |
-|              | `hideNav`    | **NO**    | `boolean` | Used to hide kyc page’s navigation bar |
+| Element type | Property     | Required? | Default value | Type      | Description                            |
+| :----------- | :----------- | :-------- | :------------ | :-------- | :------------------------------------- |
+| `kyc`        | `hideHeader` | **NO**    | `false`       | `boolean` | Used to hide kyc page’s header         |
+|              | `hideNav`    | **NO**    | `false`       | `boolean` | Used to hide kyc page’s navigation bar |
 
 #### `Element` Interface
 
