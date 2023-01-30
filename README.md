@@ -115,7 +115,7 @@ This event will be fired when:
 - Consent page is ready, if it is enabled. The event data will be `{ type: 'consent'}`. Use this event to decide when to remove loading status from your page.
 - Kyc page is ready. The event data will be `{type: 'kyc', kycStatus: 'INIT'}`, which represents the account's onboarding status. Use `kycStatus` to render your own status pages and handle re-entry scenarios.
 
-**TS Interface**
+Type
 
 ```ts
 type kycEventData = {
@@ -130,7 +130,7 @@ type consentEventData = {
 element.on('ready', (data: kycEventData | consentEventData) => void);
 ```
 
-**Example**
+Example
 
 ```ts
 element.on('ready', (data: kycEventData | consentEventData) => {
@@ -142,13 +142,13 @@ element.on('ready', (data: kycEventData | consentEventData) => {
 
 This event fires when the onboarding flow is completed successfully.
 
-**TS Interface**
+Type
 
 ```ts
 element.on(''success'', () => void);
 ```
 
-**Example**
+Example
 
 ```ts
 element.on('success', () => {
@@ -160,13 +160,13 @@ element.on('success', () => {
 
 This event fires when the component is exited by cancellation.
 
-**TS Interface**
+Type
 
 ```ts
 element.on('cancel', () => void);
 ```
 
-**Example**
+Example
 
 ```ts
 element.on('cancel', () => {
@@ -178,7 +178,7 @@ element.on('cancel', () => {
 
 This event fires when an error occurs within the component.
 
-**TS Interface**
+Type
 
 ```ts
 type errorCode = 'API_ERROR' | 'SUBMIT_FAILED' | 'UNKNOWN';
@@ -187,7 +187,7 @@ type ErrorData = { code: errorCode, message?: string }
 element.on('error', (data: ErrorData) => void);
 ```
 
-**Example**
+Example
 
 ```ts
 element.on('error', (data: ErrorData) => {
