@@ -43,6 +43,8 @@ await init({
 
 ### Element
 
+Call `createElement(type, options)` to create an element object.
+
 ```ts
 import { createElement } from '@airwallex/platform-onboarding-sdk';
 
@@ -66,7 +68,7 @@ window.AirwallexOnboarding.createElement(options);
 | `kyc`        | `hideHeader` | **NO**    | `false`       | `boolean` | Used to hide kyc page’s header         |
 |              | `hideNav`    | **NO**    | `false`       | `boolean` | Used to hide kyc page’s navigation bar |
 
-#### `Element` Interface
+#### `element` object
 
 ```ts
 export type EVENT_TYPE = 'ready' | 'success' | 'error' | 'cancel'
@@ -95,6 +97,8 @@ interface Element {
 
 #### Usage/Examples
 
+Create the kyc element
+
 ```ts
 const element = await createElement({
   type: "kyc",
@@ -103,6 +107,13 @@ const element = await createElement({
     hideNav: true,
   },
 });
+```
+
+Mount the element to your page
+
+```ts
+const containerElement = document.getElementById("onboarding");
+element.mount(containerElement);
 ```
 
 ### Element Events
