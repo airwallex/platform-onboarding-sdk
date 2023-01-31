@@ -37,9 +37,9 @@ await init(options);
 await init({
   langKey: 'en',
   env: 'prod',
-  authCode: 'x4D7A7wOSQvoygpwqdUZpG0GFHTcQfVPBTZoKV7EibgH',
-  clientId: 'BIjjMYHYTPuRqnkEloSvvf',
-  codeVerifier: '~wh344Lea1FCMVH39Fn9R2~nqq2uyD4wbvG9XCzWRxd0sZh9MFiF9gSVkM0C-ZvrdtjBFA6Cw1EvCpJcIjaeXg1-BXCfZd25ZmvuYZAqZtjJQA3NAa~7X1sgEfbMZJwQ'',
+  authCode: 'x4D7A7wOSQvoygpwqweZpG0GFHTcQfVPBTZoKV7EibgH',
+  clientId: 'BIjjMYsYTPuRqnkEloSvvf',
+  codeVerifier: '~wh344Lea1FsCMVH39Fn9R2~nqq2uyD4wbvG9XCzWRxd0sZh9MFiF9gSVkM0C-ZvrdtjBFA6Cw1EvCpJcIjaeXg1-BXCfZd25ZmvuYZAqZtjJQA3NAa~7X1sgEfbMZJwQ',
 });
 ```
 
@@ -103,7 +103,7 @@ Create the kyc element
 
 ```ts
 const element = await createElement({
-  type: "kyc",
+  type: 'kyc',
   options: {
     hideHeader: true,
     hideNav: true,
@@ -114,7 +114,7 @@ const element = await createElement({
 Mount the element to your page
 
 ```ts
-const containerElement = document.getElementById("onboarding");
+const containerElement = document.getElementById('onboarding');
 element.mount(containerElement);
 ```
 
