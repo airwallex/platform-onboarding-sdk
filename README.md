@@ -35,9 +35,11 @@ await init(options);
 ```ts
 // initialize window.AirwallexOnboarding
 await init({
-  authCode: "",
-  clientId: "",
-  codeVerifier: "",
+  langKey: 'en',
+  env: 'prod',
+  authCode: 'x4D7A7wOSQvoygpwqweZpG0GFHTcQfVPBTZoKV7EibgH',
+  clientId: 'BIjjMYsYTPuRqnkEloSvvf',
+  codeVerifier: '~wh344Lea1FsCMVH39Fn9R2~nqq2uyD4wbvG9XCzWRxd0sZh9MFiF9gSVkM0C-ZvrdtjBFA6Cw1EvCpJcIjaeXg1-BXCfZd25ZmvuYZAqZtjJQA3NAa~7X1sgEfbMZJwQ',
 });
 ```
 
@@ -65,8 +67,8 @@ window.AirwallexOnboarding.createElement(options);
 
 | Element type | Property     | Required? | Default value | Type      | Description                            |
 | :----------- | :----------- | :-------- | :------------ | :-------- | :------------------------------------- |
-| `kyc`        | `hideHeader` | **NO**    | `false`       | `boolean` | Used to hide kyc page’s header         |
-|              | `hideNav`    | **NO**    | `false`       | `boolean` | Used to hide kyc page’s navigation bar |
+| `kyc`        | `hideHeader` | **NO**    | `false`       | `boolean` | Used to hide the page's header        |
+|              | `hideNav`    | **NO**    | `false`       | `boolean` | Used to hide the page's navigation, which is heavily tied to the progression of the onboarding exercise. It is important to note that the user can review completed items, and edit if they need to adjust content. In addition, the user has another option to edit the form on the final review page. |
 
 #### `element` object
 
@@ -101,7 +103,7 @@ Create the kyc element
 
 ```ts
 const element = await createElement({
-  type: "kyc",
+  type: 'kyc',
   options: {
     hideHeader: true,
     hideNav: true,
@@ -112,7 +114,7 @@ const element = await createElement({
 Mount the element to your page
 
 ```ts
-const containerElement = document.getElementById("onboarding");
+const containerElement = document.getElementById('onboarding');
 element.mount(containerElement);
 ```
 
@@ -156,7 +158,7 @@ This event fires when the onboarding flow is completed successfully.
 Type
 
 ```ts
-element.on(''success'', () => void);
+element.on('success', () => void);
 ```
 
 Example
