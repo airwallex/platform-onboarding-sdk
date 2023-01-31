@@ -67,8 +67,8 @@ window.AirwallexOnboarding.createElement(options);
 
 | Element type | Property     | Required? | Default value | Type      | Description                            |
 | :----------- | :----------- | :-------- | :------------ | :-------- | :------------------------------------- |
-| `kyc`        | `hideHeader` | **NO**    | `false`       | `boolean` | Used to hide kyc page’s header         |
-|              | `hideNav`    | **NO**    | `false`       | `boolean` | Used to hide kyc page’s navigation bar |
+| `kyc`        | `hideHeader` | **NO**    | `false`       | `boolean` | Used to hide the page's header        |
+|              | `hideNav`    | **NO**    | `false`       | `boolean` | Used to hide the page's navigation, which is heavily tied to the progression of the onboarding exercise. It is important to note that the user can review completed items, and edit if they need to adjust content. In addition, the user has another option to edit the form on the final review page. |
 
 #### `element` object
 
