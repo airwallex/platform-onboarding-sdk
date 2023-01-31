@@ -35,9 +35,11 @@ await init(options);
 ```ts
 // initialize window.AirwallexOnboarding
 await init({
-  authCode: "",
-  clientId: "",
-  codeVerifier: "",
+  langKey: 'en',
+  env: 'prod',
+  authCode: 'x4D7A7wOSQvoygpwqdUZpG0GFHTcQfVPBTZoKV7EibgH',
+  clientId: 'BIjjMYHYTPuRqnkEloSvvf',
+  codeVerifier: '~wh344Lea1FCMVH39Fn9R2~nqq2uyD4wbvG9XCzWRxd0sZh9MFiF9gSVkM0C-ZvrdtjBFA6Cw1EvCpJcIjaeXg1-BXCfZd25ZmvuYZAqZtjJQA3NAa~7X1sgEfbMZJwQ'',
 });
 ```
 
@@ -156,7 +158,7 @@ This event fires when the onboarding flow is completed successfully.
 Type
 
 ```ts
-element.on(''success'', () => void);
+element.on('success', () => void);
 ```
 
 Example
