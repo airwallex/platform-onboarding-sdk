@@ -1,7 +1,7 @@
 # Airwallex Platform Onboarding SDK
 
 ## Installation
-
+Option 1: Use @airwallex/platform-onboarding-sdk
 Install with Yarn
 
 ```bash
@@ -14,12 +14,19 @@ Or, with NPM
 npm install @airwallex/platform-onboarding-sdk
 ```
 
-## Initialization
+Option 2: Import as a static resource
+```html
+<script src=”https://static.airwallex.com/widgets/sdk/onboarding/v1/index.js” />
+```
 
+## Initialization
 ```ts
 import { init } from '@airwallex/platform-onboarding-sdk';
 
 await init(options);
+
+// Or
+await window.airwallexOnboarding.init(options);
 ```
 
 | Option         | Type     | Required? | Default value | Description                                                                                                                                                         |
@@ -33,7 +40,6 @@ await init(options);
 #### Usage/Examples
 
 ```ts
-// initialize window.AirwallexOnboarding
 await init({
   langKey: 'en',
   env: 'prod',
@@ -65,9 +71,9 @@ window.AirwallexOnboarding.createElement(options);
 
 #### `options` object properties:
 
-| Element type | Property     | Required? | Default value | Type      | Description                            |
-| :----------- | :----------- | :-------- | :------------ | :-------- | :------------------------------------- |
-| `kyc`        | `hideHeader` | **NO**    | `false`       | `boolean` | Used to hide the page's header        |
+| Element type | Property     | Required? | Default value | Type      | Description                                                                                                                                                                                                                                                                                             |
+| :----------- | :----------- | :-------- | :------------ | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `kyc`        | `hideHeader` | **NO**    | `false`       | `boolean` | Used to hide the page's header                                                                                                                                                                                                                                                                          |
 |              | `hideNav`    | **NO**    | `false`       | `boolean` | Used to hide the page's navigation, which is heavily tied to the progression of the onboarding exercise. It is important to note that the user can review completed items, and edit if they need to adjust content. In addition, the user has another option to edit the form on the final review page. |
 
 #### `element` object
