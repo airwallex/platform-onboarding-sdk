@@ -1,7 +1,9 @@
 # Airwallex Platform Onboarding SDK
 
 ## Installation
+
 Option 1: Use @airwallex/platform-onboarding-sdk
+
 Install with Yarn
 
 ```bash
@@ -15,13 +17,23 @@ npm install @airwallex/platform-onboarding-sdk
 ```
 
 Option 2: Import as a static resource
+
 ```html
 <script src=”https://static.airwallex.com/widgets/sdk/onboarding/v1/index.js” />
 ```
 
 ## Initialization
+
 ```ts
 import { init } from '@airwallex/platform-onboarding-sdk';
+
+const options = {
+  langKey: 'en',
+  env: 'prod',
+  authCode: 'x4D7A7wOSQvoygpwqweZpG0GFHTcQfVPBTZoKV7EibgH',
+  clientId: 'BIjjMYsYTPuRqnkEloSvvf',
+  codeVerifier: '~wh344Lea1FsCMVH39Fn9R2~nqq2uyD4wbvG9XCzWRxd0sZh9MFiF9gSVkM0C-ZvrdtjBFA6Cw1EvCpJcIjaeXg1-BXCfZd25ZmvuYZAqZtjJQA3NAa~7X1sgEfbMZJwQ',
+}
 
 await init(options);
 
@@ -37,29 +49,25 @@ await window.airwallexOnboarding.init(options);
 | `authCode`     | `string` | **YES**   | -             | Auth code to authenticate the connected account retrieved from `/api/v1/accounts/{id}/authorize`                                                                    |
 | `codeVerifier` | `string` | **YES**   | -             | Serves as proof key for code exchange (see RFC 7636 Section 4). A random string picked by yourself, and used to generate the codeChallenge.                         |
 
-#### Usage/Examples
-
-```ts
-await init({
-  langKey: 'en',
-  env: 'prod',
-  authCode: 'x4D7A7wOSQvoygpwqweZpG0GFHTcQfVPBTZoKV7EibgH',
-  clientId: 'BIjjMYsYTPuRqnkEloSvvf',
-  codeVerifier: '~wh344Lea1FsCMVH39Fn9R2~nqq2uyD4wbvG9XCzWRxd0sZh9MFiF9gSVkM0C-ZvrdtjBFA6Cw1EvCpJcIjaeXg1-BXCfZd25ZmvuYZAqZtjJQA3NAa~7X1sgEfbMZJwQ',
-});
-```
-
-### Element
+### Create an Element
 
 Call `createElement(type, options)` to create an element object.
 
 ```ts
 import { createElement } from '@airwallex/platform-onboarding-sdk';
 
-createElement(options);
+const options = {
+  type: 'kyc',
+  options: {
+    hideHeader: true,
+    hideNav: true,
+  },
+}
+
+const element = createElement(options);
 
 // Or
-window.AirwallexOnboarding.createElement(options);
+const element = window.AirwallexOnboarding.createElement(options);
 ```
 
 #### Method parameters
@@ -83,7 +91,6 @@ export type EVENT_TYPE = 'ready' | 'success' | 'error' | 'cancel'
 
 interface Element {
   /**
-   * Element integration `step #3`
    * Mount element to your HTML DOM element
    */
   mount(domElement: string | HTMLElement): void;
@@ -103,30 +110,45 @@ interface Element {
 }
 ```
 
-#### Usage/Examples
+### Mount the element
 
-Create the kyc element
-
-```ts
-const element = await createElement({
-  type: 'kyc',
-  options: {
-    hideHeader: true,
-    hideNav: true,
-  },
-});
-```
-
-Mount the element to your page
+Mount the element to your page.
 
 ```ts
+const element = createElement(options);
 const containerElement = document.getElementById('onboarding');
 element.mount(containerElement);
 ```
 
+### Unmount the element
+
+Using this function to unmount the element, opposite to mount function. **The element instance is still kept.**
+
+```ts
+element.unmount();
+```
+
+### Destory the element
+
+Using this function to destory the element instance.
+
+```ts
+element.destroy();
+```
+
+### Listen to element events
+
+Using this function to listen to element events.
+
+```ts
+element.on('success', () => {
+  // Handle success event
+});
+```
+
 ### Element Events
 
-Subscribe to element events to handle life cycles of an element.
+The Onboarding component might emit the following events during its lifecycle.
 
 #### `ready`
 
