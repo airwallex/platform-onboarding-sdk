@@ -235,3 +235,7 @@ element.on('error', (data: ErrorData) => {
   // Handle error event
 });
 ```
+
+## Theming
+
+We can configure the Onboarding component to reflect your brand's color palette and logo. Contact your Airwallex Account Manager to enable customization in line with your business requirements.
